@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:weightSum="12"
+    tools:context=".DocBao">
+    <WebView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/webDocBao"
+        android:layout_weight="11"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:layout_height="50dp">
+        <Button
+            android:layout_width="0dp"
+            android:text="Quay về"
+            android:padding="10dp"
+            android:textColor="#000000"
+            android:layout_margin="0dp"
+            android:id="@+id/btnBack"
+            android:backgroundTint="#FFFFFF"
+            android:textSize="12sp"
+            android:drawableLeft="@drawable/undo"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/btnSaveNew"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0dp"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/bookmark"
+            android:padding="10dp"
+            android:text="Lưu tin"
+            android:textColor="#000000"
+            android:backgroundTint="#FFFFFF"
+            android:textSize="12sp" />
+        <Button
+            android:layout_width="0dp"
+            android:text="Chia sẽ"
+            android:textSize="12sp"
+            android:layout_margin="0dp"
+            android:padding="10dp"
+            android:textColor="#000000"
+            android:backgroundTint="#FFFFFF"
+            android:id="@+id/btnShareNew"
+            android:drawableLeft="@drawable/share1"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+    </LinearLayout>
+</LinearLayout>

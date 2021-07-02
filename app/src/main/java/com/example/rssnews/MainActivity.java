@@ -1,10 +1,18 @@
 package com.example.rssnews;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
+
+import com.google.android.material.navigation.NavigationView;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -22,10 +30,17 @@ import java.util.regex.Pattern;
 public class MainActivity extends AppCompatActivity {
 
     ArrayList<TinTuc> tinTucArrayList;
+    Toolbar toolbar;
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+    DocBaoRecycleAdapter docBaoRecycleAdapter;
+    RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        AnhXa();
+        actionToolBar();
         new ReadRSS().execute("https://vnexpress.net/rss/tin-moi-nhat.rss");
     }
     private class ReadRSS extends AsyncTask<String, Void, String> {
@@ -79,7 +94,27 @@ public class MainActivity extends AppCompatActivity {
                 //tinTuc.setNgayDang(parseTwitterDate(parser.getValue(element,"pubDate")).toString());
                 tinTucArrayList.add(tinTuc);
             }
-            Toast.makeText(MainActivity.this,tinTucArrayList.get(1).getTieuDe()+"",Toast.LENGTH_LONG).show();
+            docBaoRecycleAdapter = new DocBaoRecycleAdapter(MainActivity.this,R.layout.tintuc_layout,tinTucArrayList);
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this);
+            recyclerView.setAdapter(docBaoRecycleAdapter);
+            recyclerView.setLayoutManager(linearLayoutManager);
         }
+    }
+    private void actionToolBar() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationIcon(R.drawable.ic_action_menu);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+    }
+    public void AnhXa() {
+        toolbar = findViewById(R.id.toolBar);
+        drawerLayout = findViewById(R.id.drawerLayout);
+        recyclerView = findViewById(R.id.lstTrangchu);
+        navigationView = findViewById(R.id.navigationMenu);
     }
 }
