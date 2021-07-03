@@ -4,9 +4,17 @@
         <item android:id="@+id/nav_item_danhmuc"
             android:icon="@drawable/ic_baseline_list_alt_24"
             android:title="Danh mục tin" />
-        <item android:id="@+id/nav_item_four"
-            android:title="Item 4" />
-        <item android:id="@+id/nav_item_five"
-            android:title="Item 5" />
+        <item android:id="@+id/nav_item_tin_da_luu"
+            android:icon="@drawable/ic_baseline_save_24"
+            android:title="Tin đã lưu" />
+        <item android:id="@+id/nav_item_thoi_tiet"
+            android:icon="@drawable/ic_baseline_wb_sunny_24"
+            android:title="Thời tiết" />
+        <item android:id="@+id/nav_item_xo_so"
+            android:icon="@drawable/ic_baseline_calculate_24"
+            android:title="Xổ số" />
+        <item android:id="@+id/nav_item_phan_hoi"
+            android:icon="@drawable/ic_baseline_feedback_24"
+            android:title="Phản hồi" />
     </group>
 </menu>

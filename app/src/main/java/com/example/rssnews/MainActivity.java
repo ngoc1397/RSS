@@ -39,13 +39,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     NavigationView navigationView;
     DocBaoRecycleAdapter docBaoRecycleAdapter;
     RecyclerView recyclerView;
+    Database database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        database = new Database(this, "qltintuc.sqlite", null, 1);
+        database.QueryData("CREATE TABLE IF NOT EXISTS TinTuc(Id INTEGER PRIMARY KEY AUTOINCREMENT, TieuDe VARCHAR(400), Link VARCHAR(500), NgayDang VARCHAR(50) ,AnhBia VARCHAR(500), Logo VARCHAR(500))");
         AnhXa();
         actionToolBar();
         setNavigationViewListener();
+        new ReadRSS().execute("https://vnexpress.net/rss/tin-moi-nhat.rss");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
         new ReadRSS().execute("https://vnexpress.net/rss/tin-moi-nhat.rss");
     }
 
@@ -56,6 +65,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_item_danhmuc:
                 Intent intent = new Intent(MainActivity.this,DanhMuc.class);
                 startActivity(intent);
+                break;
+            case R.id.nav_item_tin_da_luu:
+                Intent intent1 = new Intent(MainActivity.this,TinDaLuuActivity.class);
+                startActivity(intent1);
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);

@@ -50,11 +50,11 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            android:background="#404040"
+            android:background="#4C4B4B"
             android:id="@+id/navigationMenu"
             app:menu="@menu/activity_main_drawer"
             app:itemTextColor="@color/white"
-            app:itemTextAppearance="@color/white"
+            app:itemTextAppearance="@style/menu_text_style"
             app:itemIconSize="20sp"
             app:headerLayout="@layout/nav_header"
             android:layout_gravity="start">
