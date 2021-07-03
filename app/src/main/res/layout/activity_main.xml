@@ -19,7 +19,7 @@
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="#FF03EE"
+                android:background="#5A7DA3"
                 android:id="@+id/toolBar"
                 >
                 <TextView
@@ -39,6 +39,8 @@
                 android:layout_height="match_parent">
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
+                    android:layout_margin="10dp"
+                    android:fitsSystemWindows="true"
                     android:background="@color/white"
                     android:layout_height="match_parent"
                     android:id="@+id/lstTrangchu"/>
@@ -48,10 +50,12 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            android:background="#EBFAF6"
+            android:background="#404040"
             android:id="@+id/navigationMenu"
             app:menu="@menu/activity_main_drawer"
-            app:itemTextColor="@color/black"
+            app:itemTextColor="@color/white"
+            app:itemTextAppearance="@color/white"
+            app:itemIconSize="20sp"
             app:headerLayout="@layout/nav_header"
             android:layout_gravity="start">
             <TextView

@@ -29,7 +29,7 @@ public class DocBaoRecycleAdapter extends RecyclerView.Adapter<DocBaoRecycleAdap
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(layout,null);
+        View view = inflater.inflate(layout,parent,false);
         return new ViewHolder(view);
     }
 

@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".DocBao"></activity>
+        <activity android:name=".TinTheoDanhMucActivity"></activity>
+        <activity android:name=".DanhMuc" />
+        <activity android:name=".DocBao" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

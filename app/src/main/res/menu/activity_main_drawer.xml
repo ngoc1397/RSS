@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group>
-        <item android:id="@+id/nav_item_one"
-            android:title="Danh mục tin" />
-    </group>
-
     <group android:id="@+id/group_menu">
+        <item android:id="@+id/nav_item_danhmuc"
+            android:icon="@drawable/ic_baseline_list_alt_24"
+            android:title="Danh mục tin" />
         <item android:id="@+id/nav_item_four"
             android:title="Item 4" />
         <item android:id="@+id/nav_item_five"
