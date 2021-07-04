@@ -70,6 +70,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Intent intent1 = new Intent(MainActivity.this,TinDaLuuActivity.class);
                 startActivity(intent1);
                 break;
+            case R.id.nav_item_xo_so:
+                Intent intent2 = new Intent(MainActivity.this,XoSoActivity.class);
+                startActivity(intent2);
+                break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
