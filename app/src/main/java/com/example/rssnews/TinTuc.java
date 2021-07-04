@@ -1,6 +1,8 @@
 package com.example.rssnews;
 
-public class TinTuc {
+import java.io.Serializable;
+
+public class TinTuc implements Serializable {
     public String getTieuDe() {
         return tieuDe;
     }

@@ -78,6 +78,7 @@ public class DocBaoRecycleAdapter extends RecyclerView.Adapter<DocBaoRecycleAdap
             public void onClick(View v) {
                 Intent intent = new Intent(context, DocBao.class);
                 intent.putExtra("link", tinTuc.getLink());
+                intent.putExtra("tintuc",tinTuc);
                 context.startActivity(intent);
             }
         });
