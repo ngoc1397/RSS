@@ -11,7 +11,7 @@
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#5A7DA3"
+        android:background="#222342"
         android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +23,7 @@
             app:queryHint="Tìm kiếm tin tức..."
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#5A7DA3"
+            android:background="#222342"
             app:searchIcon="@drawable/ic_baseline_search_24"
              />
     </RelativeLayout>

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.rssnews">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -11,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".XoSoActivity"></activity>
+        <activity android:name=".ChonThanhPhoActivity"></activity>
+        <activity android:name=".ThoiTietActivity" />
+        <activity android:name=".XoSoActivity" />
         <activity android:name=".TinDaLuuActivity" />
         <activity android:name=".TinTheoDanhMucActivity" />
         <activity android:name=".DanhMuc" />
