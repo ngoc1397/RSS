@@ -18,18 +18,11 @@
             android:layout_height="match_parent">
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
+                android:id="@+id/toolBar"
+                android:gravity="end"
                 android:layout_height="?attr/actionBarSize"
                 android:background="#222342"
-                android:id="@+id/toolBar"
                 >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="25sp"
-                    android:layout_marginLeft="0dp"
-                    android:text="Đọc báo RSS"
-                    android:gravity="start"
-                    android:textColor="@color/white"/>
             </androidx.appcompat.widget.Toolbar>
 
             <LinearLayout

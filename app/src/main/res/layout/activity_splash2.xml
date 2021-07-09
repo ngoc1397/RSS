@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_gravity="top"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="#01B6FD"
+    android:layout_height="match_parent"
+    tools:context=".SplashActivity2">
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/splash_newspaper"
+        android:id="@+id/splashIcon"/>
+
+    <TextView
+        android:id="@+id/txtLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:fontFamily="@font/longfox"
+        android:text="RSS News"
+        android:textColor="@color/black"
+        android:textSize="50sp"
+        android:textStyle="italic" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nhóm 12 - thengoc828@gmail.com"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:layout_marginBottom="300dp"
+        android:id="@+id/txtSlogan"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Version 1.0"
+        android:textColor="#666"
+        android:textSize="15dp" />
+</LinearLayout>

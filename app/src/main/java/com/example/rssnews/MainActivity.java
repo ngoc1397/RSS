@@ -49,7 +49,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         AnhXa();
         actionToolBar();
         setNavigationViewListener();
-        new ReadRSS().execute("https://vnexpress.net/rss/tin-moi-nhat.rss");
+        Intent intent = getIntent();
+        tinTucArrayList = (ArrayList<TinTuc>) intent.getSerializableExtra("lst");
+        docBaoRecycleAdapter = new DocBaoRecycleAdapter(MainActivity.this,R.layout.tintuc_layout,tinTucArrayList);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this);
+        recyclerView.setAdapter(docBaoRecycleAdapter);
+        recyclerView.setLayoutManager(linearLayoutManager);
     }
 
     @Override

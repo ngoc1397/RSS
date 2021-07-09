@@ -3,30 +3,40 @@
     package="com.example.rssnews">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label=""
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="Đọc báo RSS"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".ChonThanhPhoActivity"></activity>
-        <activity android:name=".ThoiTietActivity" />
-        <activity android:name=".XoSoActivity" />
-        <activity android:name=".TinDaLuuActivity" />
-        <activity android:name=".TinTheoDanhMucActivity" />
-        <activity android:name=".DanhMuc" />
-        <activity android:name=".DocBao" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".SplashActivity2" android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SplashActivity"
+            android:noHistory="true"
+            android:theme="@style/SplashScreen">
+        </activity>
+        <activity android:name=".ChonThanhPhoActivity" />
+        <activity android:name=".ThoiTietActivity" />
+        <activity android:name=".XoSoActivity" />
+        <activity android:name=".TinDaLuuActivity" />
+        <activity android:name=".TinTheoDanhMucActivity" />
+        <activity android:name=".DanhMuc" />
+        <activity android:name=".DocBao" />
+        <activity android:name=".MainActivity"></activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
