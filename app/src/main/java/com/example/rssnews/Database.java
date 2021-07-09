@@ -22,6 +22,9 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         return sqLiteDatabase.rawQuery(sql, null);
     }
+    /*
+    * Phương thức thêm tin tức
+    * */
     public void ThemTinTuc(String tieuDe, String Link,String ngayDang, String AnhBia, String Logo) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         String sql = "INSERT INTO TinTuc VALUES(null,?,?,?,?,?)";

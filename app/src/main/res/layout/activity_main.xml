@@ -30,13 +30,18 @@
                 android:orientation="vertical"
                 android:weightSum="11"
                 android:layout_height="match_parent">
-                <androidx.recyclerview.widget.RecyclerView
+                <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="10dp"
-                    android:fitsSystemWindows="true"
-                    android:background="@color/white"
                     android:layout_height="match_parent"
-                    android:id="@+id/lstTrangchu"/>
+                    android:id="@+id/swipeLayout">
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_margin="10dp"
+                        android:fitsSystemWindows="true"
+                        android:background="@color/white"
+                        android:layout_height="match_parent"
+                        android:id="@+id/lstTrangchu"/>
+                </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
             </LinearLayout>
         </LinearLayout>
         <com.google.android.material.navigation.NavigationView

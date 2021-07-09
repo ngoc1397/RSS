@@ -47,16 +47,12 @@ public class DocBaoRecycleAdapter extends RecyclerView.Adapter<DocBaoRecycleAdap
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final TinTuc tinTuc = tinTucList.get(position);
+        holder.imgLuuTin.setBackgroundResource(R.drawable.danhmuc_background);//Cập nhật backdground về trạng thái mới vì tính chất Recycleview
         holder.txtTieude.setText(tinTuc.getTieuDe());
         holder.txtNgaydang.setText(tinTuc.getNgayDang());
         holder.imgLuuTin.setImageResource(R.drawable.ic_baseline_bookmark_add_24);
-        String sql = "SELECT * FROM TinTuc";
-        Cursor cursor = database.GetData(sql);
-        while (cursor.moveToNext()) {
-            String Link = cursor.getString(2);
-            if (Link.equals(tinTuc.getLink())) {
+        if (kiemTraTrung(tinTuc.getLink())) {
                 holder.imgLuuTin.setBackgroundResource(R.drawable.btn_daluu_background);
-            }
         }
         holder.imgLuuTin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,6 +79,9 @@ public class DocBaoRecycleAdapter extends RecyclerView.Adapter<DocBaoRecycleAdap
             }
         });
     }
+    /*
+    * Kiểm tra trùng lạp link trong database để cập nhật trạng thái cho button lưu
+    * */
     boolean kiemTraTrung(String link){
         String sql = "SELECT * FROM TinTuc";
         Cursor cursor = database.GetData(sql);

@@ -7,6 +7,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     DocBaoRecycleAdapter docBaoRecycleAdapter;
     RecyclerView recyclerView;
     Database database;
+    SwipeRefreshLayout refreshLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,17 +52,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         actionToolBar();
         setNavigationViewListener();
         Intent intent = getIntent();
+        tinTucArrayList = new ArrayList<>();
         tinTucArrayList = (ArrayList<TinTuc>) intent.getSerializableExtra("lst");
         docBaoRecycleAdapter = new DocBaoRecycleAdapter(MainActivity.this,R.layout.tintuc_layout,tinTucArrayList);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this);
         recyclerView.setAdapter(docBaoRecycleAdapter);
         recyclerView.setLayoutManager(linearLayoutManager);
+        refreshLayout = findViewById(R.id.swipeLayout);
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                tinTucArrayList.clear();
+                new ReadRSS().execute("https://vnexpress.net/rss/tin-moi-nhat.rss");
+                refreshLayout.setRefreshing(false);
+            }
+        });
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        new ReadRSS().execute("https://vnexpress.net/rss/tin-moi-nhat.rss");
     }
 
     // Lấy sự kiện click on Item navigation view
@@ -94,7 +105,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private class ReadRSS extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... strings) {
-            tinTucArrayList = new ArrayList<>();
             StringBuilder content = new StringBuilder();
             try {
                 URL url = new URL(strings[0]);
@@ -142,10 +152,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 //tinTuc.setNgayDang(parseTwitterDate(parser.getValue(element,"pubDate")).toString());
                 tinTucArrayList.add(tinTuc);
             }
-            docBaoRecycleAdapter = new DocBaoRecycleAdapter(MainActivity.this,R.layout.tintuc_layout,tinTucArrayList);
-            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this);
-            recyclerView.setAdapter(docBaoRecycleAdapter);
-            recyclerView.setLayoutManager(linearLayoutManager);
+            docBaoRecycleAdapter.notifyDataSetChanged();
         }
     }
     private void actionToolBar() {
