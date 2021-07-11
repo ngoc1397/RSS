@@ -4,17 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
+
     android:background="@color/white"
     tools:context=".TinDaLuuActivity">
+    <RelativeLayout
+        android:id="@+id/relativeLayoutTinDaLuu"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#222342"
+        android:padding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search_bar_tindaluu"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            app:queryHint="Tìm kiếm tin tức đã lưu..."
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#222342"
+            app:searchIcon="@drawable/ic_baseline_search_24"
+            />
+    </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/lstTinDaLuu"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:id="@+id/lstTinDaLuu"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayoutTinDaLuu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

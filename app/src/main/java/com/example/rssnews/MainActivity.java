@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -73,26 +75,45 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onRestart() {
         super.onRestart();
     }
-
+    public boolean isNetworkAvailable(Context context) {
+        ConnectivityManager connectivityManager = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE));
+        return connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnected();
+    }
     // Lấy sự kiện click on Item navigation view
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.nav_item_danhmuc:
-                Intent intent = new Intent(MainActivity.this,DanhMuc.class);
-                startActivity(intent);
+                if(isNetworkAvailable(MainActivity.this)){
+                    Intent intent = new Intent(MainActivity.this,DanhMuc.class);
+                    startActivity(intent);
+                }else {
+                    Toast.makeText(MainActivity.this,"Không có kết nối mạng",Toast.LENGTH_LONG).show();
+                }
                 break;
             case R.id.nav_item_tin_da_luu:
-                Intent intent1 = new Intent(MainActivity.this,TinDaLuuActivity.class);
-                startActivity(intent1);
+                if(isNetworkAvailable(MainActivity.this)){
+                    Intent intent1 = new Intent(MainActivity.this,TinDaLuuActivity.class);
+                    startActivity(intent1);
+                }else {
+                    Toast.makeText(MainActivity.this,"Không có kết nối mạng",Toast.LENGTH_LONG).show();
+                }
                 break;
             case R.id.nav_item_xo_so:
-                Intent intent2 = new Intent(MainActivity.this,XoSoActivity.class);
-                startActivity(intent2);
+                if(isNetworkAvailable(MainActivity.this)){
+                    Intent intent2 = new Intent(MainActivity.this,XoSoActivity.class);
+                    startActivity(intent2);
+                }else {
+                    Toast.makeText(MainActivity.this,"Không có kết nối mạng",Toast.LENGTH_LONG).show();
+                }
                 break;
             case R.id.nav_item_thoi_tiet:
-                Intent intent3 = new Intent(MainActivity.this,ThoiTietActivity.class);
-                startActivity(intent3);
+                if(isNetworkAvailable(MainActivity.this)){
+                    Intent intent3 = new Intent(MainActivity.this,ThoiTietActivity.class);
+                    startActivity(intent3);
+                }else {
+                    Toast.makeText(MainActivity.this,"Không có kết nối mạng",Toast.LENGTH_LONG).show();
+                }
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);

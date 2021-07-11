@@ -2,6 +2,7 @@ package com.example.rssnews;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -52,12 +53,20 @@ public class DanhMucTinAdapter extends BaseAdapter {
         viewDanhMuc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(),TinTheoDanhMucActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("link",dm.getLink());
-                context.startActivity(intent);
+                if(isNetworkAvailable(context)){
+                    Intent intent = new Intent(v.getContext(),TinTheoDanhMucActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.putExtra("link",dm.getLink());
+                    context.startActivity(intent);
+                }else {
+                    Toast.makeText(context,"Không có kết nối mạng",Toast.LENGTH_LONG).show();
+                }
             }
         });
         return viewDanhMuc;
+    }
+    public boolean isNetworkAvailable(Context context) {
+        ConnectivityManager connectivityManager = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE));
+        return connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnected();
     }
 }
