@@ -13,7 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".SplashActivity2" android:noHistory="true">
+        <activity android:name=".CovidActivity"></activity>
+        <activity android:name=".ThoiTietNewActivity" />
+        <activity
+            android:name=".SplashActivity2"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,8 +27,7 @@
         <activity
             android:name=".SplashActivity"
             android:noHistory="true"
-            android:theme="@style/SplashScreen">
-        </activity>
+            android:theme="@style/SplashScreen" />
         <activity android:name=".ChonThanhPhoActivity" />
         <activity android:name=".ThoiTietActivity" />
         <activity android:name=".XoSoActivity" />
@@ -32,7 +35,7 @@
         <activity android:name=".TinTheoDanhMucActivity" />
         <activity android:name=".DanhMuc" />
         <activity android:name=".DocBao" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
