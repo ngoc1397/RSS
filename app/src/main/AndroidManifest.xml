@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".CovidActivity"></activity>
+        <activity android:name=".CountryCovidActivity"></activity>
+        <activity android:name=".CovidActivity" />
         <activity android:name=".ThoiTietNewActivity" />
         <activity
             android:name=".SplashActivity2"
