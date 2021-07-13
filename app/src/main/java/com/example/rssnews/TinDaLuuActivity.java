@@ -1,6 +1,7 @@
 package com.example.rssnews;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,6 +16,7 @@ public class TinDaLuuActivity extends AppCompatActivity {
     ArrayList<TinTuc> tinTucArrayList;
     DocBaoRecycleAdapter docBaoRecycleAdapter;
     RecyclerView recyclerView;
+    SearchView searchView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,8 +28,34 @@ public class TinDaLuuActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(TinDaLuuActivity.this);
         recyclerView.setAdapter(docBaoRecycleAdapter);
         recyclerView.setLayoutManager(linearLayoutManager);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                String textSearch = newText;
+                ArrayList<TinTuc> tinTucs = new ArrayList<>();
+                for (TinTuc tinTuc : tinTucArrayList)
+                {
+                    if(tinTuc.getTieuDe().toLowerCase().contains(textSearch.toLowerCase())){
+                        tinTucs.add(tinTuc);
+                    }
+                }
+                if(tinTucs.size() > 0){
+                    docBaoRecycleAdapter = new DocBaoRecycleAdapter(TinDaLuuActivity.this,R.layout.tintuc_layout,tinTucs);
+                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(TinDaLuuActivity.this);
+                    recyclerView.setAdapter(docBaoRecycleAdapter);
+                    recyclerView.setLayoutManager(linearLayoutManager);
+                }
+                return false;
+            }
+        });
     }
     void AnhXa(){
+        searchView = findViewById(R.id.search_bar_tindaluu);
         recyclerView = findViewById(R.id.lstTinDaLuu);
         tinTucArrayList = new ArrayList<>();
         String sql = "SELECT * FROM TinTuc";

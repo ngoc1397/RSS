@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.ConnectivityManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,10 +73,15 @@ public class DocBaoRecycleAdapter extends RecyclerView.Adapter<DocBaoRecycleAdap
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, DocBao.class);
-                intent.putExtra("link", tinTuc.getLink());
-                intent.putExtra("tintuc",tinTuc);
-                context.startActivity(intent);
+                if(isNetworkAvailable(context)){
+                    Intent intent = new Intent(context, DocBao.class);
+                    intent.putExtra("link", tinTuc.getLink());
+                    intent.putExtra("tintuc",tinTuc);
+                    context.startActivity(intent);
+                }
+                else {
+                    Toast.makeText(context,"Không có kết nối mạng",Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
@@ -115,6 +121,10 @@ public class DocBaoRecycleAdapter extends RecyclerView.Adapter<DocBaoRecycleAdap
             imgAnhlogo = (ImageView) itemView.findViewById(R.id.imgAnhlogo);
             imgLuuTin = (ImageButton) itemView.findViewById(R.id.btnLuuTin);
         }
+    }
+    public boolean isNetworkAvailable(Context context) {
+        ConnectivityManager connectivityManager = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE));
+        return connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnected();
     }
 }
 

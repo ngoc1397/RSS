@@ -2,7 +2,9 @@ package com.example.rssnews;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,6 +12,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -28,6 +31,7 @@ public class SplashActivity2 extends AppCompatActivity {
 
     ArrayList<TinTuc> tinTucArrayList;
     ImageView imgLogo;
+    int delay = 1500;
     TextView txtLogo, txtSlogan;
     Animation top, bottom;
     @Override
@@ -45,9 +49,15 @@ public class SplashActivity2 extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                new ReadRSS().execute("https://vnexpress.net/rss/tin-moi-nhat.rss");
+                if (isNetworkAvailable(getApplicationContext())){
+                    new ReadRSS().execute("https://vnexpress.net/rss/tin-moi-nhat.rss");
+                }
+                else {
+                    Toast.makeText(getApplicationContext(),"Không có kết nối mạng",Toast.LENGTH_LONG).show();
+                    finish();
+                }
             }
-        },1000);
+        },delay);
     }
     private class ReadRSS extends AsyncTask<String, Void, String> {
         @Override
@@ -104,5 +114,9 @@ public class SplashActivity2 extends AppCompatActivity {
             intent.putExtra("lst",tinTucArrayList);
             startActivity(intent);
         }
+    }
+    public boolean isNetworkAvailable(Context context) {
+        ConnectivityManager connectivityManager = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE));
+        return connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnected();
     }
 }

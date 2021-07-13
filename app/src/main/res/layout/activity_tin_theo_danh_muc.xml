@@ -22,6 +22,7 @@
             style="@style/Widget.MaterialComponents.Toolbar.Primary"
             app:queryHint="Tìm kiếm tin tức..."
             android:layout_width="match_parent"
+            app:defaultQueryHint="123"
             android:layout_height="match_parent"
             android:background="#222342"
             app:searchIcon="@drawable/ic_baseline_search_24"
